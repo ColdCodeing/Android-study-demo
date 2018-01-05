@@ -18,7 +18,7 @@
 
         <!--</activity>-->
 
-        <activity android:name=".CalculatorActivity"
+        <activity android:name=".SortActivity"
             android:configChanges="keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -34,21 +34,50 @@ public class Calculator {
     /**
      * 上次计算结果
      */
-    public static int cacheResult;
+    public int cacheResult = 0;
+    /**
+     * 上次运算符号
+     */
+    public int lastMark = -1;
 
-    public int plus(int a, int b) {
-        return a + b;
+    /**
+     * 加法
+     * @param input 输入的值
+     * @param cache 上次显示的值
+     * @return
+     */
+    public int plus(int input, int cache) {
+        return input + cache;
     }
 
-    public int sub(int a, int b) {
-        return a - b;
+    /**
+     * 減法
+     * @param input
+     * @param cache
+     * @return
+     */
+    public int sub(int input, int cache) {
+        return cache - input;
     }
 
-    public int multi(int a, int b) {
-        return a * b;
+    /**
+     * 乘法
+     * @param input
+     * @param cache
+     * @return
+     */
+    public int multi(int input, int cache) {
+        return input * cache;
     }
 
-    public int deliver(int a, int b) throws ArithmeticException {
-        return a / b;
+    /**
+     * 除法
+     * @param input
+     * @param cache
+     * @return
+     * @throws ArithmeticException
+     */
+    public int deliver(int input, int cache) throws ArithmeticException {
+        return cache / input;
     }
 }
