@@ -3,6 +3,7 @@ package com.zhouyu.myapplication;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,13 +17,16 @@ public class GridCalculatorActivity extends Activity implements OnKeyboardListen
     public static final String[] MARKS = {"7", "8", "9", "*",
     "4", "5", "6", "-", "1", "2", "3", "+", "0", ".", "=", "/"};
     public static final String[] ORANGE_MARKS = {"*", "-", "+", "/"};
-    public static final String[] NUMBERS = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    public static final String[] CALCS = {"+", "-", "*", "/"};
+    public static final String brString = "<br\\\\>";
 
     CalculatorAdapter mAdapter;
     GridView mGridView;
-    Calculator mCalculator;
-    TextView resultTextView;
+    TextView textView;
+
+    private String preString = "";          //已经计算过的表达式
+    private String lastString = "";         //最新的表达式
+    private Boolean isExcute = false;       //是否已经完后计算
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,54 +37,49 @@ public class GridCalculatorActivity extends Activity implements OnKeyboardListen
         mAdapter = new CalculatorAdapter(this, MARKS, this);
         mGridView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-        mCalculator = new Calculator();
-        resultTextView = findViewById(R.id.gridTextView);
+        textView = findViewById(R.id.gridTextView);
     }
 
     @Override
     public void onKeyboardListener(String mark) {
-        Integer keyType = 0;
-        Integer value = 0;
-        Integer calc = 0;
-        for (int i = 0; i < NUMBERS.length; i++) {
-            if (NUMBERS[i].equals(mark)) {
-                keyType = 1;
-                value = i;
-                break;
+
+        if ("=".equals(mark)) {         //等号时计算表达式
+            excuteExpression();
+        } else {                        //表达式输入
+            if (isExcute) {
+                preString = lastString + brString;
+                lastString = mark;
+                isExcute = false;
+            } else {
+                lastString += mark;
             }
         }
-        for (int i = 0; i < CALCS.length; i++) {
-            if (CALCS[i].equals(mark)) {
-                keyType = 2;
-                calc = i;
-                break;
-            }
-        }
-        if ("=".equals(mark)) {
-            keyType = 3;
-        }
-        switch (keyType) {
-            case 0:
-                break;
-            case 1:
-                mCalculator.inputValue = mCalculator.inputValue * 10 + value;
-                resultTextView.setText(mCalculator.inputValue + "");
-                break;
-            case 2:
-                showResult(mCalculator.calc(mCalculator.inputValue, mCalculator.cacheResult, calc));
-                break;
-            case 3:
-                break;
-        }
+        setText();
     }
 
-    private void showResult(int result) {
-        // 将上次显示的结果缓存在cacheResult中，作为下次计算时的缓存值
-        mCalculator.cacheResult = result;
-        mCalculator.inputValue = 0;
-        // 将计算结果显示在文本中
-        resultTextView.setText(result + "");
-        // 每次计算完成后将输入文本框重置为0
+    private void excuteExpression() {
+        if(lastString == null || lastString.length() == 0) {
+            return;
+        }
+        double result;
+        try {
+            result = ExpressionCalc.calculate(lastString);
+            isExcute = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            textView.setError(e.getMessage());
+            return;
+        }
+        lastString += " = " + result;
+    }
+
+    private void setText() {
+        final String[] tags = new String[]{"<font color='#858585'>", "<font color='#CD2626'>", "</font> "};
+        StringBuilder builder = new StringBuilder();
+        // 添加颜色标签
+        builder.append(tags[0]);    builder.append(preString);    builder.append(tags[2]);
+        builder.append(tags[1]);    builder.append(lastString);   builder.append(tags[2]);
+        textView.setText(Html.fromHtml(builder.toString()));
     }
 }
 

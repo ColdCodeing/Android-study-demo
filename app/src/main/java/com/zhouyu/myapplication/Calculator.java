@@ -27,6 +27,7 @@ public class Calculator {
      * 输入值
      */
     public int inputValue;
+    public int inputValue1;
     /**
      * 默认值，0
      */

@@ -4,22 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/gridTextView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:textSize="60sp"
-        android:textColor="#FFFFFF"
-        android:background="#7F858C"
-        android:gravity="bottom|end|right"
-        android:paddingRight="10dp"
-        android:text="0" />
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/gridTextView"
+            />
+        <TextView
+            android:id="@+id/gridTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#333333"
+            android:gravity="start"
+            android:paddingRight="10dp"
+            android:text="0"
+            android:singleLine="false"
+            android:scrollbars="vertical"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/grid_calculator"
+            />
 
-    <GridView
-        android:id="@+id/grid_calculator"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:numColumns="4"
-        android:layout_weight="4"/>
+        <GridView
+            android:layout_alignParentBottom="true"
+            android:id="@+id/grid_calculator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="4"
+            android:layout_weight="4"/>
+    </RelativeLayout>
 </LinearLayout>
