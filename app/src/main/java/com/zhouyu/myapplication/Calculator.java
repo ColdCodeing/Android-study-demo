@@ -80,4 +80,31 @@ public class Calculator {
     public int deliver(int input, int cache) throws ArithmeticException {
         return cache / input;
     }
+
+    public int calc(int inputValue, int cacheResult, int calcType) throws ArithmeticException {
+        int resultValue = 0;
+        switch (calcType) {
+            case 0:
+                resultValue = plus(inputValue, cacheResult);
+                break;
+            case 1:
+                resultValue = sub(inputValue, cacheResult);
+                break;
+            case 2:
+                resultValue = multi(inputValue, cacheResult);
+                break;
+            case 3:
+                resultValue = deliver(inputValue, cacheResult);
+                break;
+        }
+        return resultValue;
+    }
 }
+
+
+
+
+
+
+
+

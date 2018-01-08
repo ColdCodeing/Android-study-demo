@@ -72,7 +72,7 @@ public class CalculatorAdapter extends BaseAdapter {
         // 初始化后赋值（文字，颜色等）
         if (isOrange) {
             holder.textView.setTextColor(mContext.getResources().getColor(R.color.white));
-//            convertView.setBackgroundColor(mContext.getResources().getColor(R.color.keyboard_orange));
+            convertView.setBackgroundColor(mContext.getResources().getColor(R.color.keyboard_orange));
         }
         holder.textView.setText(mark);
 
