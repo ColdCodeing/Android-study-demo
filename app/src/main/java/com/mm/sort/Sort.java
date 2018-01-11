@@ -1,8 +1,6 @@
-package com.zhouyu.sort;
+package com.mm.sort;
 
 import java.util.Arrays;
-
-import static java.util.Arrays.*;
 
 /**
  * Created by Tsubasa on 2018/1/5.

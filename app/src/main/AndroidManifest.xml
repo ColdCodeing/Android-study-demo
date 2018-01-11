@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zhouyu.myapplication">
+    package="com.mm.myapplication">
 
     <application
         android:allowBackup="true"
@@ -18,7 +18,7 @@
 
         <!--</activity>-->
 
-        <activity android:name=".GridCalculatorActivity"
+        <activity android:name="com.mm.myapplication.GridCalculatorActivity"
             android:configChanges="keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -1,14 +1,14 @@
-package com.zhouyu.myapplication;
+package com.mm.sort;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.zhouyu.sort.Sort;
+import com.mm.myapplication.R;
+import com.mm.sort.Sort;
 
-import static com.zhouyu.sort.Sort.integerArr;
+import static com.mm.sort.Sort.integerArr;
 
 /**
  * Created by Tsubasa on 2018/1/5.

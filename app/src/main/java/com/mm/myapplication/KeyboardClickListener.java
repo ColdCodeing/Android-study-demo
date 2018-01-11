@@ -1,6 +1,5 @@
-package com.zhouyu.myapplication;
+package com.mm.myapplication;
 
-import android.view.MotionEvent;
 import android.view.View;
 
 /**

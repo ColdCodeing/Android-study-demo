@@ -1,18 +1,17 @@
-package com.zhouyu.myapplication;
+package com.mm.myapplication;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.widget.GridView;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mm.util.ExpressionCalc;
 
 import java.text.DecimalFormat;
 
@@ -114,7 +113,7 @@ public class GridCalculatorActivity extends Activity implements OnKeyboardListen
             isExcute = true;
         } catch (Exception e) {
             e.printStackTrace();
-            textView.setError(e.getMessage());
+            Toast.makeText(this, "错误的表达式", Toast.LENGTH_SHORT).show();
             return;
         }
         preString = lastString + " = ";

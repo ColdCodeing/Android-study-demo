@@ -1,10 +1,8 @@
-package com.zhouyu.myapplication;
+package com.mm.myapplication;
 
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
-
-import java.security.PublicKey;
 
 /**
  * Created by panmin on 18-1-10.

@@ -1,4 +1,4 @@
-package com.zhouyu.myapplication;
+package com.mm.util;
 
 /**
  * Created by panmin on 18-1-8.
