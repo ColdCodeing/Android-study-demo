@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
     <color name="keyboard_orange">#e89747</color>
+    <color name="keyboard_blue">#00ff00</color>
 </resources>

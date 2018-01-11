@@ -2,6 +2,7 @@ package com.zhouyu.myapplication;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -16,11 +17,13 @@ public class CalculatorAdapter extends BaseAdapter {
     Context mContext;
     String[] mData;
     OnKeyboardListener mListener;
+    int height;
 
-    public CalculatorAdapter(Context context, String[] data, OnKeyboardListener listener) {
+    public CalculatorAdapter(Context context, String[] data, OnKeyboardListener listener, int height) {
         mContext = context;
         mData = data;
         mListener = listener;
+        this.height = height;
     }
 
     /**
@@ -71,13 +74,12 @@ public class CalculatorAdapter extends BaseAdapter {
         }
         // 初始化后赋值（文字，颜色等）
         if (isOrange) {
-            holder.textView.setTextColor(mContext.getResources().getColor(R.color.white));
-            convertView.setBackgroundColor(mContext.getResources().getColor(R.color.keyboard_orange));
+            holder.textView.setTextColor(mContext.getResources().getColor(R.color.keyboard_orange));
         }
         holder.textView.setText(mark);
-
-        convertView.setOnClickListener(new KeyboardClickListener(mark, mListener));
-
+        holder.textView.setHeight(height);         //高度
+        convertView.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+        convertView.setOnTouchListener(new KeyBoardTouchListener(isOrange, mark, mContext, mListener));
         return convertView;
     }
 

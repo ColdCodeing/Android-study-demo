@@ -2,39 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="10">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <TextView
+            android:id="@+id/preTextView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:ellipsize="start"
+            android:paddingRight="10dp"
+            android:background="#333333"
+            android:gravity="end|center"
             android:layout_above="@id/gridTextView"
             />
         <TextView
             android:id="@+id/gridTextView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:background="#333333"
-            android:gravity="start"
+            android:gravity="end|center"
+            android:ellipsize="start"
             android:paddingRight="10dp"
             android:text="0"
-            android:singleLine="false"
-            android:scrollbars="vertical"
-            android:textColor="#FFFFFF"
-            android:textSize="60sp"
-            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:textColor="#CD2626"
             android:layout_above="@id/grid_calculator"
             />
-
         <GridView
             android:layout_alignParentBottom="true"
             android:id="@+id/grid_calculator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numColumns="4"
-            android:layout_weight="4"/>
-    </RelativeLayout>
+            android:numColumns="4"/>
 </LinearLayout>

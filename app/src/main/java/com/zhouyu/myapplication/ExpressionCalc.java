@@ -7,20 +7,12 @@ import java.util.Stack;
  * Created by panmin on 18-1-8.
  */
 public class ExpressionCalc {
-    private static int[] operatPriority = new int[] { 0, 3, 2, 1, -1, 1, 0, 2 };// 运用运算符ASCII码-40做索引的运算符优先级
-
-    public static double conversion(String expression) {
-        double result = 0;
-        expression = transform(expression);
-        result = calculate(expression);
-        return result;
-    }
+    private static int[] operatPriority = new int[]{0, 3, 2, 1, -1, 1, 0, 2};// 运用运算符ASCII码-40做索引的运算符优先级
 
     /**
      * 将表达式中负数的符号更改
      *
-     * @param expression
-     *            例如-2+-1*(-3E-2)-(-1) 被转为 ~2+~1*(~3E~2)-(~1)
+     * @param expression 例如-2+-1*(-3E-2)-(-1) 被转为 ~2+~1*(~3E~2)-(~1)
      * @return
      */
     private static String transform(String expression) {
@@ -37,10 +29,10 @@ public class ExpressionCalc {
                 }
             }
         }
-        if(arr[0]=='~'||arr[1]=='('){
-            arr[0]='-';
-            return "0"+new String(arr);
-        }else{
+        if (arr[0] == '~' || arr[1] == '(') {
+            arr[0] = '-';
+            return "0" + new String(arr);
+        } else {
             return new String(arr);
         }
     }
@@ -48,24 +40,24 @@ public class ExpressionCalc {
     /**
      * 按照给定的表达式计算
      *
-     * @param expression
-     *            要计算的表达式例如:5+12*(3+5)/7
+     * @param expression 要计算的表达式例如:5+12*(3+5)/7
      * @return
      */
     public static double calculate(String expression) {
-        Stack<String> postfixStack = new Stack<String>();// 后缀式栈
-        Stack<Character> opStack = new Stack<Character>();// 运算符栈
+        Stack<String> postfixStack = new Stack<String>();           // 后缀式栈
+        Stack<Character> opStack = new Stack<Character>();          // 运算符栈
+        expression = transform(expression);                         //负号的转换
 
         Stack<String> resultStack = new Stack<String>();
-        prepare(expression, opStack, postfixStack);
-        Collections.reverse(postfixStack);// 将后缀式栈反转
-        String firstValue, secondValue, currentValue;// 参与计算的第一个值，第二个值和算术运算符
+        prepare(expression, opStack, postfixStack);                 //求后缀表达式
+        Collections.reverse(postfixStack);                          // 将后缀式栈反转
+        String firstValue, secondValue, currentValue;               // 参与计算的第一个值，第二个值和算术运算符
         while (!postfixStack.isEmpty()) {
             currentValue = postfixStack.pop();
-            if (!isOperator(currentValue.charAt(0))) {// 如果不是运算符则存入操作数栈中
+            if (!isOperator(currentValue.charAt(0))) {              // 如果不是运算符则存入操作数栈中
                 currentValue = currentValue.replace("~", "-");
                 resultStack.push(currentValue);
-            } else {// 如果是运算符则从操作数栈中取两个值和该数值一起参与运算
+            } else {                                    // 如果是运算符则从操作数栈中取两个值和该数值一起参与运算
                 secondValue = resultStack.pop();
                 firstValue = resultStack.pop();
 

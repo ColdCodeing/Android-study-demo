@@ -32,11 +32,7 @@ public class KeyBoardTouchListener implements View.OnTouchListener{
                 listener.onKeyboardListener(mark);
                 break;
             default:
-                if (isOrange) {
-                    v.setBackgroundColor(mContext.getResources().getColor(R.color.keyboard_orange));
-                } else {
-                    v.setBackgroundColor(mContext.getResources().getColor(R.color.white));
-                }
+                v.setBackgroundColor(mContext.getResources().getColor(R.color.white));
         }
         return true;
     }

@@ -1,12 +1,13 @@
 package com.zhouyu.myapplication;
 
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
  * Created by fuyue on 2018/1/5.
  */
 
-public class KeyboardClickListener implements View.OnClickListener {
+public class KeyboardClickListener implements View.OnClickListener{
 
     public String mark;
     private OnKeyboardListener listener;
@@ -20,4 +21,5 @@ public class KeyboardClickListener implements View.OnClickListener {
     public void onClick(View v) {
         listener.onKeyboardListener(mark);
     }
+
 }
